@@ -7,7 +7,8 @@ Mirror repository: https://bitbucket.org/odin3/opengears/src
 
 ## Documentation
 
-Documentation and tutorial are included inside this distribution
+Documentation and tutorial are available on this link - http://odin3.github.io/open-gears/
+Documentation also included inside this distribution.
 
 ## System requirements
 
