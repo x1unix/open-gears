@@ -1,0 +1,447 @@
+<section>
+  <h1><a name="setup">Setup</a></h1>
+<div class="txt-block">
+  <p>
+    Before we will use the framework, we must configure it. To do this, lets open <u>config.php</u> file in root folder of the project.In this article, we do not consider all the options, but only the most important ones.
+  </p>
+  <p>
+    List of options:
+    <table class="bordered">
+      <thead>
+        <tr>
+          <th>Option name</th>
+          <th>Description</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>WWW</td>
+          <td>Base URL of your site</td>
+          <td>"http://".$_SERVER['HTTP_HOST']</td>
+        </tr>
+        <tr>
+          <td>SYSTEMROOT</td>
+          <td>Root directory of the application</td>
+          <td>Empty</td>
+        </tr>
+        <tr>
+          <td>REWRITE_URI</td>
+          <td>Enables URL mod_rewrite for Apache</td>
+          <td>true</td>
+        </tr>
+      </tbody>
+    </table>
+  </p>
+  <br />
+  <p>
+    Optional values for communication with MySQL database:
+    <table class="bordered">
+      <thead>
+        <tr>
+          <th>Option name</th>
+          <th>Description</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DB_HOST</td>
+          <td>MySQL server hostname</td>
+          <td>localhost</td>
+        </tr>
+        <tr>
+          <td>DB_USER</td>
+          <td>Database username</td>
+          <td>root</td>
+        </tr>
+        <tr>
+          <td>DB_PASS</td>
+          <td>Password for access</td>
+          <td>empty</td>
+        </tr>
+        <tr>
+          <td>DB_BASE</td>
+          <td>Default database</td>
+          <td>empty</td>
+        </tr>
+      </tbody>
+    </table>
+  </p>
+
+
+</div>
+</section>
+
+<section>
+  <h1><a name="helloWorld">Hello World</a></h1>
+  <div class="txt-block">
+    When you're finished to configure the app, let's create a simple Hello World activity.
+
+    <h3>1. Create a controller file</h3>
+    <p>You need to create a controller for Hello World activity. All controllers are stored in <b><u>/application/controller</u></b> directory and are stored as classes in php files. Each PHP file has name of controller and can store only <b>one single</b> controller.<br />We will name this file: <u>helloWorld.php</u></p>
+    <h3>2. Defining a controller</h3>
+    <p>
+      To define a controller inside a controller file, you must to declare a controller class.<br />
+      All controller classes are extended from base class <b>Controller</b> and named by controller file name with "<u>Controller</u>" in CamelCase format.<br />
+      Name of our controller class will be <b>helloWorldController</b>, because file name of the controller is <u>helloWorld</u>.
+    </p>
+    <code><pre>
+    &lt;?php
+      class helloWorldController extends Controller
+      {
+        // The body of our controller
+      }
+    ?&gt;
+    </pre></code>
+    <h3>3. Defining a activity</h3>
+    <p>
+      Each controller have functions. Each function provide a single activity for the controller.<br />
+      Default controller activity called <b>"main"</b>. If you will call a controller, without specified activity, system will call this main activity. Function "Main" <b>must be in each controller</b> that you created.
+      <br />
+      Our controller will have only one activity that we will call by default - it's <u>main</u>.
+      <code><pre>
+    &lt;?php
+      class helloWorldController extends Controller
+      {
+        public function main()
+        {
+          // The body of our activity
+        }
+      }
+    ?&gt;
+    </pre></code>
+    You can add more activities to your controller by adding more functions.
+    </p>
+    <h3>4. Creating a view</h3>
+    <p>
+      All views are stored in <u>application/view</u> folder as templates with PHP variables.<br />
+      To separate views between modules, they're stored in folders. Each folder is named after the module that owns the template.<br />
+      View file has name of the activity that use this template.<br />
+      You need to create a folder <u>helloWorld</u> in <u>application/view</u> folder and create a file <u>main.php</u> inside it. Folder has name of our controller, and template filename has name of our activity.
+    </p>
+    <p>
+      When you had created a file, put this text inside it:
+      <code><pre>
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello &lt;?=$username?&gt;!
+  &lt;/body&gt;
+  &lt;/html&gt;
+      </pre></code>
+    </p>
+    <p>
+      <b>&lt;?=$username?&gt;</b> - it's a variable that you will set from parent controller.
+    </p>
+    <h3>5. Attaching view and sending data</h3>
+    <p>
+      When you've created a controller and view you need to attach an activity to your controller and define <b>$username</b> to use in our view.
+      <code>
+        <pre>&lt;?php
+      class helloWorldController extends Controller
+      {
+        public function main()
+        {
+          // Attach view to this controller
+          // First parameter is folder of view, and the second - view name
+          $this->SetView("helloWorld","main");
+
+          // Create a variable, to use in template
+          $this->Data['username'] = "World";
+
+          // Execute a controller
+          return $this->Execute();
+        }
+      }
+    ?&gt;</pre>
+      </code>
+    </p>
+    <h3>6. Execute a controller</h3>
+    <p>
+      When we've created controller and view, we can access to controller from URL. There is two ways to access it:
+      <br /><br />
+      <b>With enabled mod_rewrite (Apache only)</b> - <u>http://yoursite.com/helloWorld/main</u><br />
+      <b>Regular method</b> - <u>http://yoursite.com/?path=helloWorld/main</u>
+    </p>
+    <p>
+      As you may have noticed, URL has specified template (route):<br />
+      <b>With enabled mod_rewrite (Apache only)</b> - http://yoursite.com/<b>YourController</b>/<b>Activity</b><br />
+      <b>Regular method</b> - http://yoursite.com/?path=<b>YourController</b>/<b>Activity</b>
+    </p>
+    <p>
+      If you won't write activity name, you will be redirected to default activity (main)
+    </p>
+    <p>
+      At the end of this tutorial, you must get a page with text "Hello World".
+    </p>
+  </div>
+</section>
+
+<section>
+  <h1><a name="invoking">Call controller inside the other</a></h1>
+  <div class="txt-block">
+    <p>
+      OpenGears allows to you to call controllers inside the others. This feature can be useful when you need to use header and footer with menus inside your application.
+    </p>
+    <p>
+      To show you how to do this, we'll create 2 controllers and 3 views.
+    </p>
+    <h3>1. Creating a header and footer</h3>
+    <p>We will create a simple controller with two activities. First is for header, and second - for footer. We will call it - <u>common.php</u></p>
+    <code>
+        <pre>&lt;?php
+      class commonController extends Controller
+      {
+
+      // HEADER
+        public function header()
+        {
+          // Attach view to this controller
+          // First parameter is folder of view, and the second - view name
+          $this->SetView("common","header");
+
+          // Create an array with links for main menu
+          $this->Data['menu'] = array('/'=>"Home", "/about"=>"About","/buy"=>"Store");
+
+          // Page title
+          // To receive page title from another controller, we will use system scope
+          $this->Data['title'] = $this->Scope['pageTitle'];
+
+          // Execute a controller
+          return $this->Execute();
+        }
+      
+      // FOOTER
+        public function footer()
+        {
+          // Attach view to this controller
+          // First parameter is folder of view, and the second - view name
+          $this->SetView("common","footer");
+
+          // copyright variable
+          $this->Data['copyright'] = "2015 © Copyright";
+
+          // Execute a controller
+          return $this->Execute();
+        }
+      }
+    ?&gt;</pre>
+      </code>
+      <p>
+        Now, we will create templates for header and footer for module <b>common</b>
+        (<u>application/view/common</u>)
+      </p>
+      <u>header.php</u>:
+      <code><pre>
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;&lt;?=$title?&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;header&gt;
+      &lt;?php foreach ($menu as $url =&gt; $label) { ?&gt;
+        &lt;a href="&lt;?=$url?&gt;"&gt;&lt;?=$label?&gt;&lt;/a&gt;
+      &lt;?php } ?&gt;
+  &lt;/header&gt;
+      </pre></code>
+      <u>footer.php</u>:
+      <code><pre>
+ &lt;footer&gt;
+  &lt;?=$copyright?&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre></code>
+      <h3>2. Creating an activity</h3>
+      <p>
+        Now, let's create an activity where we will use header and footer from <u>common</u> controller and show at template.
+      </p>
+      <p>We will call a controller - <b>main</b>, and an activity also - <b>main</b></p>
+      <p><b>main</b> it's a default controller, so when we will open our app, we won't have to write it after website address, just - <u>http://site.com</u></p>
+      <u>main.php</u>
+      <code>
+        <pre>&lt;?php
+      class mainController extends Controller
+      {
+
+      // MAIN
+        public function main()
+        {
+          // Attach view to this controller
+          // First parameter is folder of view, and the second - view name
+          $this->SetView("main","main");
+
+          // To transfer data between controllers, we'll store data in scope
+          $this->AddToScope("pageTitle","My Homepage");
+
+          // Call a header activity from controller
+          // And store it as variable
+            $this->Data['header'] = System::Invoke("common","header");
+
+          // Lets do the same with footer
+            $this->Data['footer'] = System::Invoke("common","footer");
+
+          // Content of the page
+          $this->Data['content'] = "Wellcome to my page!";
+
+          // Execute a controller
+          return $this->Execute();
+        }
+      }
+    ?&gt;</pre>
+      </code>
+      <p>
+        And finaly, create a view:
+      </p>
+      <u>main.php</u>
+      <code>
+        <pre>&lt;?=$header?&gt;
+
+&lt;h1&gt;Wellcome&lt;/h1&gt;
+&lt;p&gt;&lt;?=$content?&gt;
+
+&lt;?=$footer?&gt;</pre>
+      </code>
+      <p>As you see, we put an output from header and footer activities as variables, and to send title string from main controller to header, we used <u>scope</u></p>
+      <p>To run this example, just type address of your app</p>
+      
+
+  </div>
+</section>
+
+<section>
+  <h1><a name="mysql">MySQL Operations</a></h1>
+  <p>
+  This example contains a tutorial with usage of all functions in ebmedded MySQL library, more functions you can see in <u>system/drivers/mysql.php</u>
+  </p>
+  <code>
+    <pre>&lt;php
+
+class usersController extends Controller
+{
+
+  public function Main()
+  {
+    $this->SetView("users","main");
+
+    // Create a new object to access to DB
+    // Name of table - users
+    $database = new DataBase;
+    $database->Base = "db";
+    $database->Hostname = "localhost";
+    $database->User = "root";
+    $database->Password = "";
+
+    try{
+
+      // We can do a simple query, and also escape query string by the way
+      $q = "SELECT * FROM `users` WHERE `music` = 'Metallica';";
+      $q = $database->EscapeString($q);
+
+      // Simple DB query
+      $database->Query($q);
+
+      // Get Rows with users
+      $this->Data['users'] = $database->GetRows("SELECT * FROM `users`");
+
+      // Get users count
+      $this->Data['count'] = $database->Count("users");
+
+      // Get single row
+      $this->Data['admin'] = $database->GetRow("SELECT * FROM `users` WHERE `id`='1'");
+    }
+    catch(MySQLQueryException $e)
+    {
+      //Catch error in mysql query
+      die("Error in MYSQL syntax".$e);
+    }
+
+    $this->Data['header'] = System::Invoke("common","header");
+    $this->Data['footer'] = System::Invoke("common","footer");
+
+    return $this->Execute();
+  }
+
+}
+?&gt;</pre>
+  </code>
+</section>
+
+
+
+<section>
+  <h1><a name="models">Models</a></h1>
+  <p>
+  All models in OpenGears are represented as <u>static</u> classes in PHP files.<br />
+  All models stored in <u>application/models</u> directory. According to SOLID design, each file contains only single class.
+  </p>
+  <p>
+    Here is simple example how to create and use models in controllers. We will create a model, called 'users'
+  </p>
+  <u>application/models/users.php</u>
+  <code>
+    <pre>&lt;php
+public class users
+{
+  public static function get($id)
+  {
+    // Create a new object to access to DB
+    // Name of table - users
+    $database = new DataBase;
+    $database->Base = "db";
+    $database->Hostname = "localhost";
+    $database->User = "root";
+    $database->Password = "";
+    $id = $database->EscapeString($id);
+    return $database->GetRows("SELECT * FROM `users` WHERE `id`='$id'");
+  }
+}
+?&gt;</pre>
+  </code>
+  <p>
+    Controller, where we will use the model:
+  </p>
+  <u>users.php</u>
+  <code>
+    <pre>&lt;php
+// import a model
+System::GetModel("users");
+
+class usersController extends Controller
+{
+
+  public function Main()
+  {
+    $this->SetView("users","main");
+
+    $_id = 1;
+    if(isset($_GET['id'])) $_id = $_GET['id'];
+
+    // Here we use the model
+    $this->Data['users'] = users::get($_id);
+
+    $this->Data['header'] = System::Invoke("common","header");
+    $this->Data['footer'] = System::Invoke("common","footer");
+
+    return $this->Execute();
+  }
+
+}
+?&gt;</pre>
+  </code>
+  
+</section>
+
+<section>
+  <h1><a name="more">More information</a></h1>
+  <p>
+    More information you can find in <a href="#">documentation</a>.
+  </p>
+</section>

@@ -1,0 +1,79 @@
+<section>
+  <h1><a name="intro">Introduction</a></h1>
+<p class="txt-block">
+  OpenGears it's free open-source PHP MVC framework. The main target of OpenGears it's to provide a lightweight basis for web applications. This framework is easy to use and can be useful for begginers who started to learn MVC pattern.
+</p>
+</section>
+
+<section>
+  <h1><a name="requirements">System requirements</a></h1>
+  <div class="txt-block">
+    To install and use OpenGears, you must have:
+    <ul>
+      <li>NGINX / Apache 2.2 or higher</li>
+      <li>Mod Rewrite for Apache</li>
+      <li>PHP 5.4 or higher</li>
+      <li>Installed PHP modules:
+          <ul>
+            <li>mb_string</li>
+            <li>MySQLi</li>
+          </ul>
+      </li>
+      <li>MySQL Server 5.0 or higher (optional)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1><a name="features">Features</a></h1>
+  <div class="txt-block">
+    <ul>
+      <li>Pure MVC structure</li>
+      <li>Fast setup and configuration</li>
+      <li>Easy template management</li>
+      <li>Build-in rounting</li>
+      <li>Fast Exception-based MySQL library</li>
+      <li>Output compression</li>
+      <li>Build-in cache system (in development)</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h1><a name="struct">File structure</a></h1>
+  <p>
+  Here is list of files and directories that included in the framework with their description:
+  <ul>
+    <li>
+      <b>application</b> - application components
+      <ul>
+        <li><b>controller</b> - application controllers</li>
+        <li><b>data</b> - application misc data</li>
+        <li><b>model</b> - models</li>
+        <li><b>views</b> - views (templates)</li>
+      </ul>
+    </li>
+
+    <li>
+      <b>media</b> - images, styles and etc.
+      <ul>
+        <li><b>css</b> - stylesheets</li>
+        <li><b>img</b> - images</li>
+        <li><b>js</b> - JavaScript files</li>
+      </ul>
+    </li>
+
+
+    <li>
+      <b>system</b> - system core components and drivers
+      <ul>
+        <li><b>drivers</b> - system drivers (for example: MySQL)</li>
+        <li><u>controller.php</u> - controller base class</li>
+        <li><u>kernel.php</u> - Core</li>
+      </ul>
+    </li>
+    <li><u>config.php</u> - the framework configuration file</li>
+    <li><u>index.php</u> - application entrypoint</li>
+  </ul>
+  </p>
+</section>

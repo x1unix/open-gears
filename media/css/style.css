@@ -1,0 +1,289 @@
+html, body
+{
+  margin:0;
+  min-height: 100%;
+  font:12pt "Roboto",helvetica,sans-serif;
+  text-align: center;
+  background: white;
+  color:white;
+}
+footer
+{
+  padding-top:32px;
+}
+body
+{
+    background-position: 0 0,0 0,0 0;
+    background-color: #00539f;
+    background-image: url(../img/header-background.png),url(../img/blueprint.png),url(../img/header-gradient.png);
+    background-repeat: repeat,repeat,repeat-x;
+}
+.content
+{
+  height:100%;
+  width:100%;
+  position: relative;
+}
+.s
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height:380px;
+}
+.ogTitle
+{
+  font-size:85pt;
+  font-weight: lighter;
+}
+.ogDesk
+{
+  display:block;
+  margin-top:32px;
+  margin-bottom:128px;
+  font-size:9pt;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.imenu
+{
+  margin:0 auto;
+  padding:0;
+  list-style: none;
+  display:table;
+  width:100%;
+  max-width:640px;
+}
+.imenu li
+{
+  display:block;
+  width:25%;
+  float:left;
+}
+.imenu a
+{
+  color:white;
+  text-decoration: none;
+  font-weight: lighter;
+  font-size:18pt;
+  border-bottom:2px solid transparent;
+  transition:all 0.3s ease 0s;
+  padding:5px 8px;
+  padding-bottom: 10px;
+  color:#cecece;
+  text-transform: uppercase;
+
+}
+.imenu a:hover
+{
+  border-color:white;
+  padding-bottom: 5px;
+  color:white;
+}
+
+
+header .col-l, header .col-r
+{
+  width:50%;
+  float:left;
+  padding:32px 0px;
+}
+header
+{
+  display:table;
+  width:100%;
+  max-width: 1100px;
+  margin:0 auto;
+}
+
+header .col-l
+{
+  text-align: left;
+}
+header #logo
+{
+  padding-left: 13px;
+}
+
+div.container
+{
+  display:table;
+  width:100%;
+  max-width: 1100px;
+  margin:0 auto;
+  font-size:10pt;
+}
+section.left
+{
+  text-align: left;
+  float:left;
+  width:74%;
+  margin-right:1%;
+  background: white;
+  color:black;
+  border-radius: 2px;
+-webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.23);
+box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.23);
+}
+section.right
+{
+  text-align: left;
+  float:left;
+  width:24%;
+  margin-left:1%;
+  background: white;
+  color:black;
+  border-radius: 2px;
+-webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.23);
+box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.23);
+}
+section.right ul
+{
+  margin:0;
+  padding:0;
+  list-style: none;
+  border-radius: 2px;
+}
+section.right li
+{
+  padding:0;
+  display:block;
+
+}
+a
+{
+  text-decoration: none;
+  color:#254F76;
+}
+section.right a
+{
+  display: block;
+  padding:10px 20px;
+  padding-bottom:9px;
+  transition: all 0.2s ease 0s;
+  border-bottom:1px solid #cecece;
+}
+section.right li:last-child
+{
+  -webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+}
+section.right a:hover
+{
+  background-color:#2466A3;
+  color:white;
+  border-bottom-color:#2466A3;
+}
+.inside
+{
+  padding:20px;
+}
+
+
+.ximenu
+{
+  margin:0 auto;
+  padding:0;
+  list-style: none;
+  display:table;
+  width:100%;
+  max-width:640px;
+  position: relative;
+  top:8px;
+}
+.ximenu li
+{
+  display:block;
+  width:25%;
+  float:left;
+}
+.ximenu a
+{
+  color:white;
+  text-decoration: none;
+  font-weight: lighter;
+  font-size:14pt;
+  border-bottom:2px solid transparent;
+  transition:all 0.3s ease 0s;
+  padding:5px 5px;
+  padding-bottom: 10px;
+  color:#cecece;
+  text-transform: uppercase;
+
+}
+.ximenu a:hover
+{
+  border-color:white;
+  padding-bottom: 5px;
+  color:white;
+}
+
+
+h1
+{
+  font-size:20pt;
+  margin-top:10px;
+  border-bottom: 1px solid #cecece;
+  padding-bottom:10px;
+}
+h1 > a
+{
+  color:inherit;
+  cursor:pointer;
+}
+h1 > a:hover
+{
+  color:#254F76;
+}
+.txt-block
+{
+  margin-bottom: 32px;
+}
+table.bordered
+{
+  width:100%;
+}
+table.bordered th
+{
+
+    background-color: #2466A3;
+    color: white;
+}
+table.bordered th, table.bordered td
+{
+  padding:8px;
+}
+table.bordered, table.bordered *
+{
+  border-spacing:0px;
+}
+table.bordered tbody tr:nth-child(even)
+{
+  background:#ccc;
+}
+table.bordered tbody tr:nth-child(odd)
+{
+  background:#eee;
+}
+table.bordered tr td:first-child
+{
+  font-weight: bold;
+  text-transform: uppercase;
+}
+code, pre
+{
+  color:white;
+  background: #181D20;
+  border-radius: 2px;
+  margin:20px 0;
+  font-family: "Consolas",monospace;
+}
