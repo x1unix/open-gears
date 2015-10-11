@@ -8,7 +8,7 @@
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
 
-Extension::request("convert");
+Extensions::request("convert");
 
 class AJAXResponse
 {
