@@ -1,7 +1,7 @@
 <?php
   /**
    * OpenGears Framework
-   * @version 0.7.3
+   * @version 0.8
    * @package opengears
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
@@ -9,7 +9,7 @@
 class System
 {
 
-  public static $Version = "0.7.3";
+  public static $Version = "0.8";
   public static $Scope = array();
 
  /**
@@ -21,6 +21,7 @@ class System
     $f = MODELS."$model.php";
     if(!file_exists($f)) throw new ModelNotFoundException("Cannot load model, file '$f' was not found", 1);
     require($f);
+    return new self;
   }
   /**
    * Return full HTTP path to specified controller
@@ -59,7 +60,42 @@ class System
   public static function Call($vClass,$vFunc="Main")
   {
     echo self::Invoke($vClass,$vFunc);
+    return new self;
   }
+
+  /**
+   * Load all system classes
+   */
+  public static function LoadClasses()
+  {
+    foreach (glob(CLASSES."*.php") as $_class) {
+        include($_class);
+    }
+    return new self;
+  }
+
+  /**
+   * Load all system drivers
+   */
+  public static function LoadDrivers()
+  {
+    foreach (glob(DRIVERS."*.php") as $_class) {
+        include($_class);
+    }
+
+    return new self;
+  }
+
+  /**
+   * Load all system components
+   */
+  public static function Init()
+  {
+    self::LoadClasses()->LoadDrivers();
+
+    return new self;
+  }
+
 }
 
 
@@ -69,4 +105,5 @@ class ControllerClassNotFoundException extends Exception { }
 class ViewClassNotFoundException extends Exception { }
 class ActivityNotFoundException extends Exception { }
 class ModelNotFoundException extends Exception { }
+
 ?>

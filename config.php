@@ -1,7 +1,7 @@
 <?php
 /**
  * OpenGears Framework Configuration
- * @version 0.7.3
+ * @version 0.8
  * @package opengears
  * @author Denis Sedchenko [sedchenko.in.ua]
  */
@@ -34,6 +34,7 @@ define("CONTROLLERS",APP."controller".DS);
 define("MODELS",APP."model".DS);
 define("VIEWS",APP."view".DS);
 
+
 //Data
 define("APPDATA",APP."data".DS);
 
@@ -42,6 +43,13 @@ define("CORE",SYSTEMROOT."system".DS);
 
 // Driver's path
 define("DRIVERS",CORE."drivers".DS);
+
+
+// SYSTEM EXTENSIONS
+define("EXTENSIONS",CORE."extensions".DS);
+
+// CLASSES
+define("CLASSES",CORE."classes".DS);
 
 // MINIMISE OUTPUT FOR CONTROLLERS
 define("MINIFY_OUTPUT",false);

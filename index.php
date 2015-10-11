@@ -1,14 +1,17 @@
 <?php
-// OPEN-GEARS FRAMEWORK [0.5.3]
+// OPEN-GEARS FRAMEWORK [0.8]
 // 2015 © Denis Sedchenko
 
 require_once('config.php');
 
 if(!defined("IFCONFIG")) die("<b>OpenGears Load Error</b><br />Failed to load configuration file, check if config.php exists and if 'IFCONFIG' defined.");
 
-require_once(CORE.'kernel.php');
-require_once(CORE.'controller.php');
-require_once(DRIVERS.'db.php');
+include(CORE.'kernel.php');
+
+System::Init();
+
+// Load System Extensions
+Extensions::load('base','convert','ajaxResponse');
 
 $currentController = DEFAULT_CONTROLLER;
 $currentActivity = DEFAULT_ACTIVITY;
