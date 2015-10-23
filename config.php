@@ -33,6 +33,7 @@ define("APP",SYSTEMROOT."application".DS);
 define("CONTROLLERS",APP."controller".DS);
 define("MODELS",APP."model".DS);
 define("VIEWS",APP."view".DS);
+define("LANG",APP."i18n".DS);
 
 
 //Data
