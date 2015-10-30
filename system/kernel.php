@@ -80,7 +80,7 @@ class System
   public static function LoadDrivers()
   {
     foreach (glob(DRIVERS."*.php") as $_class) {
-        include($_class);
+        if(substr( basename($_class), 0, 1 ) !== "_") include($_class);
     }
 
     return new self;

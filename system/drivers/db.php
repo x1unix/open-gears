@@ -12,6 +12,13 @@ define("SQL_UPDATE","UPDATE `@s` SET @f WHERE @w;");
 define("SQL_DELETE","DELETE FROM `@s` WHERE @f;");
 define("SQL_SELECT","SELECT @q FROM `@s`@w@order LIMIT @min, @max;");
 
+
+class MySQLConnectException extends Exception { }
+class MySQLQueryException extends Exception { }
+class MySQLiResultException extends Exception { }
+class MySQLiImportException extends Exception { }
+class MySQLiInternalException extends Exception { }
+
 /**
  * Class DataBase
  */
@@ -508,9 +515,4 @@ class DataBase
 }
 
 
-class MySQLConnectException extends Exception { }
-class MySQLQueryException extends Exception { }
-class MySQLiResultException extends Exception { }
-class MySQLiImportException extends Exception { }
-class MySQLiInternalException extends Exception { }
 ?>

@@ -35,7 +35,6 @@ define("MODELS",APP."model".DS);
 define("VIEWS",APP."view".DS);
 define("LANG",APP."i18n".DS);
 
-
 //Data
 define("APPDATA",APP."data".DS);
 
