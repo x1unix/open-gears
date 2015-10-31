@@ -1,8 +1,8 @@
 <?php
-// OPEN-GEARS FRAMEWORK [0.8]
+// OPEN-GEARS FRAMEWORK [0.8.1]
 // 2015 © Denis Sedchenko
 
-require_once('config.php');
+include('config.php');
 
 if(!defined("IFCONFIG")) die("<b>OpenGears Load Error</b><br />Failed to load configuration file, check if config.php exists and if 'IFCONFIG' defined.");
 
@@ -11,22 +11,13 @@ include(CORE.'kernel.php');
 System::Init();
 
 // Load System Extensions
-Extensions::load('base','convert','ajaxResponse');
+Extensions::load(
+    array('base','convert','ajaxResponse','baseRouter')
+);
 
-$currentController = DEFAULT_CONTROLLER;
-$currentActivity = DEFAULT_ACTIVITY;
-  
-$path = DEFAULT_CONTROLLER.'/'.DEFAULT_ACTIVITY;
-if(isset($_GET['path'])) $path = $_GET['path'];
-$path = explode("/", $path);
-
-$currentController = $path[0];
-if(isset($path[1]) && strlen($path[1]) > 0) $currentActivity = $path[1];
-
-header('X-Based-On: OpenGears/'.System::$Version);
 
 try {
-  System::Call($currentController,$currentActivity); 
+  EssentialRouter::Get($_GET);
 }
 catch(ControllerNotFoundException $e){
    echo "<h1>404</h1> <p>Requested controller doesn't exists</p>";

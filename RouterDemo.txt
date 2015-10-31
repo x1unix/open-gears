@@ -1,0 +1,24 @@
+// маршруты (можно хранить в конфиге приложения)
+// можно использовать wildcards (подстановки):
+// :any - любое цифробуквенное сочетание
+// :num - только цифры
+// в результирующее выражение записываются как $1, $2 и т.д. по порядку
+
+$routes = array(
+    // 'url' => 'контроллер/действие/параметр1/параметр2/параметр3'
+    '/' => 'MainController/index', // главная страница
+    '/contacts' => 'MainController/contacts', // страница контактов
+    '/blog' => 'BlogController/index', // список постов блога
+    '/blog/:num' => 'BlogController/viewPost/$1' // просмотр отдельного поста, например, /blog/123
+  '/blog/:any/:num' => 'BlogController/$1/$2' // действия над постом, например, /blog/edit/123 или /blog/dеlete/123
+  '/:any' => 'MainController/anyAction' // все остальные запросы обрабатываются здесь
+));
+
+// добавляем все маршруты за раз
+Router::addRoute($routes);
+
+// а можно добавлять по одному
+Router::addRoute('/about', 'MainController/about');
+
+// непосредственно запуск обработки
+Router::dispatch();
