@@ -9,7 +9,7 @@ define("O_JSON","application/json");
 
 /**
  * OpenGears Controller Prototype
- * @version 0.5.1
+ * @version 0.6.0
  * @abstract Controller
  * @package opengears
  * @author Denis Sedchenko [sedchenko.in.ua]
@@ -24,6 +24,7 @@ abstract class Controller
   protected $Before         = array();
   protected $After          = array();
   protected $Scope          = array();
+  protected $Args           = array();
   protected $Output;
 
   protected $CompressOutput = MINIFY_OUTPUT;
@@ -61,11 +62,12 @@ abstract class Controller
   
   public function __construct($scope) {
     $GLOBALS['CurrentController']=get_class ($this);
+    $this->Args = $scope['args'];
     $this->Scope = $scope;
   }
 
   /**
-    * Add an array of controllers for preexecute
+    * Add an array of controllers for pre-execution
     */
   public function AddBefore($_ctrl,$_act)
   {
