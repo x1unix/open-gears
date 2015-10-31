@@ -1,7 +1,7 @@
 <?php
   /**
-   * OpenGears Framework
-   * @version 0.8
+   * OpenGears Framework Kernel
+   * @version 0.8.1
    * @package opengears
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
@@ -9,7 +9,7 @@
 class System
 {
 
-  public static $Version = "0.8";
+  public static $Version = "0.8.1";
   public static $Scope = array();
 
  /**
@@ -69,7 +69,7 @@ class System
   public static function LoadClasses()
   {
     foreach (glob(CLASSES."*.php") as $_class) {
-        include($_class);
+        if(substr( basename($_class), 0, 1 ) !== "_") include($_class);
     }
     return new self;
   }
@@ -91,6 +91,7 @@ class System
    */
   public static function Init()
   {
+    header('X-Based-On: OpenGears/'.System::$Version);
     self::LoadClasses()->LoadDrivers();
 
     return new self;
