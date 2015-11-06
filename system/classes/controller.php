@@ -62,7 +62,7 @@ abstract class Controller
   
   public function __construct($scope) {
     $GLOBALS['CurrentController']=get_class ($this);
-    $this->Args = $scope['args'];
+    $this->Args = $scope['arguments'];
     $this->Scope = $scope;
   }
 
