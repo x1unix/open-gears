@@ -1,8 +1,8 @@
 <?php
   /**
    * OpenGears Framework Kernel
-   * @version 0.8.1
-   * @package opengears
+   * @version 0.8.2
+   * @package com.opengears.core
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
 
