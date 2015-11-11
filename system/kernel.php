@@ -12,6 +12,14 @@ class System
   public static $Version = "0.8.1";
   public static $Scope = array();
 
+
+/**
+ * Returns kernel instance
+ * @return Systen Instance
+ */
+  public static function getInstance() {
+    return new self;
+  }
  /**
    * Loads a model class into controller
    *

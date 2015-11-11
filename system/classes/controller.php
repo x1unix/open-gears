@@ -36,6 +36,13 @@ abstract class Controller
     System::$Scope[$key] = $value;
   }
 
+/**
+ * Returns controller instance
+ * @return Controller Instance of controller
+ */
+  public function getInstance() {
+    return $self;
+  }
   
   // Compress output
   public function SanitizeOutput($buffer) {
