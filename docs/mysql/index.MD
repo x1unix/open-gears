@@ -9,4 +9,8 @@ Open Gears has 2 embedded drivers for work with MySQL database - **simple** and 
 **Simple MySQL Driver (SMSQLD)** provides a base functionality to work with database, such as **exceptions** and **formatted query results**.
 **Advanced MySQL Driver (AMSQLD)** driver is extended from SMSQL, but includes a lot of prefedined query methods. 
 
+### Driver Selection
+
+To switch between DB drivers, rename a selected driver file to **db.php** in **/system/drivers** path.
+
 
