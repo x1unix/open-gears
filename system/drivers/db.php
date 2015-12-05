@@ -2,7 +2,7 @@
   /**
    * OpenGears Extended MySQL Driver
    *
-   * @version 1.0
+   * @version 1.0.0
    * @package opengears
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
