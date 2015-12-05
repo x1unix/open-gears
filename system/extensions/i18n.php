@@ -3,7 +3,7 @@
  * i18n module for OpenGears
  * 
  * @author Denis Sedchenko
- * @date   24.10.2015
+ * @version 1.0.0
  */
 class i18n {
     /**
