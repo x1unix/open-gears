@@ -9,7 +9,7 @@ define("O_JSON","application/json");
 
 /**
  * OpenGears Controller Prototype
- * @version 0.9.5
+ * @version 1.0.0
  * @abstract Controller
  * @package com.opengears.controller
  * @author Denis Sedchenko [sedchenko.in.ua]
