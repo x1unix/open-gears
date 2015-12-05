@@ -9,7 +9,7 @@ define("O_JSON","application/json");
 
 /**
  * OpenGears Controller Prototype
- * @version 0.6.2
+ * @version 0.9.5
  * @abstract Controller
  * @package com.opengears.controller
  * @author Denis Sedchenko [sedchenko.in.ua]
@@ -27,8 +27,6 @@ abstract class Controller
   protected $Args           = array();
   protected $Output;
 
-  protected $CompressOutput = MINIFY_OUTPUT;
-
 
   // Add a value to scope
   public function AddToScope($key,$value)
@@ -44,28 +42,6 @@ abstract class Controller
     return $self;
   }
   
-  // Compress output
-  public function SanitizeOutput($buffer) {
-    if(MINIFY_OUTPUT == false)
-    {
-      if($this->CompressOutput == false) return $buffer;
-    }
-    $search = array(
-        '/\>[^\S ]+/s',  // strip whitespaces after tags, except space
-        '/[^\S ]+\</s',  // strip whitespaces before tags, except space
-        '/(\s)+/s'       // shorten multiple whitespace sequences
-    );
-
-    $replace = array(
-        '>',
-        '<',
-        '\\1'
-    );
-
-    $buffer = preg_replace($search, $replace, $buffer);
-
-    return $buffer;
-  }
   
   public function __construct($scope) {
     $GLOBALS['CurrentController']=get_class ($this);
@@ -130,12 +106,9 @@ abstract class Controller
         System::Call($_ctrl["controller"],$_ctrl["action"]);
       }
     }
-    $this->Output = $this->SanitizeOutput(ob_get_contents());
+    $this->Output = ob_get_contents();
     ob_end_clean();
     return $this->Output;
-
   }
-
-
 
 }
