@@ -3,12 +3,10 @@
    * OpenGears AJAX Response Module
    *
    * Provides an AJAX response template
-   * @version 0.8
-   * @package opengears
+   * @version 1.0.0
+   * @package com.opengears.ext.ajax
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
-
-Extensions::request("convert");
 
 class AJAXResponse
 {
