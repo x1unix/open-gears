@@ -6,8 +6,7 @@
  * Provides a easy extensions management API
  *
  * @author Denis Sedchenko
- * @date 31.10.2015
- * @version 1.1.0
+ * @version 1.0.0
  *
  * Class Extensions
  */
