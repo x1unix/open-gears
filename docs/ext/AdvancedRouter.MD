@@ -9,7 +9,7 @@ Open Gears supports an advanced routing features by using a special routing modu
 This router can be enabled in **index.php** or another bootstrap file.
 
 #### Tutorial
-** index.php **
+**index.php**
 ```
 <?php
 // Routes (can be stored in app bootstrap)
