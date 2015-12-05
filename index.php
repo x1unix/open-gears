@@ -1,5 +1,5 @@
 <?php
-// OPEN-GEARS FRAMEWORK [0.8.1]
+// OPEN-GEARS FRAMEWORK [1.0] (MAGURO)
 // 2015 © Denis Sedchenko
 
 include('config.php');
