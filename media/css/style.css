@@ -1,4 +1,5 @@
-html, body
+html,
+body
 {
   margin:0;
   min-height: 100%;
@@ -85,7 +86,8 @@ body
 }
 
 
-header .col-l, header .col-r
+header .col-l,
+header .col-r
 {
   width:50%;
   float:left;
