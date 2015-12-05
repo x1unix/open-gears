@@ -23,13 +23,9 @@ catch(ControllerNotFoundException $e){
     System::$Scope["error"] = $e;
     System::Call("error");
 }
-catch(MySQLConnectException $e){
+catch(Exception $e){
     System::$Scope["error"] = $e;
-    System::Call("error","MySQLError");
-}
-catch (Exception $e) {
-    System::$Scope["error"] = $e;
-    System::Call("error");
+    System::Call("error","ServerError");
 }
 
 ?>
