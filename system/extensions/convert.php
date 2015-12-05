@@ -2,7 +2,7 @@
   /**
    * OpenGears Conversion Module
    *
-   * @version 0.8
+   * @version 1.0.0
    * @package opengears
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
