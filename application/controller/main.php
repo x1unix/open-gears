@@ -8,7 +8,7 @@ class MainController extends Controller
   {
     session_start();
     $this->SetView("index","main");
-
+    $this->Data['title'] = "OpenGears Framework";
     $this->Data['description'] = "An lightweight PHP MVC framework";
     $this->Data['cdate'] = TimeStamp::ToString(time());
 
