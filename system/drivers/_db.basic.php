@@ -1,7 +1,7 @@
 <?php
   /**
    * OpenGears Basic MySQL Driver
-   * @version 0.5.1
+   * @version 1.0
    * @package opengears
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
