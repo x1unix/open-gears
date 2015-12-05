@@ -44,7 +44,8 @@
             right:0;
             bottom:0;
             height:256px;
-            width:600px;
+            width:90%;
+            max-width:600px;
         }
         #error {
             display:none;
