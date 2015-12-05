@@ -3,7 +3,7 @@
    * OpenGears Extended MySQL Driver
    *
    * @version 1.0.0
-   * @package opengears
+   * @package com.opengears.esqld
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
 
