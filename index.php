@@ -20,19 +20,16 @@ try {
   EssentialRouter::Get($_GET);
 }
 catch(ControllerNotFoundException $e){
-   echo "<h1>404</h1> <p>Requested controller doesn't exists</p>";
-}
-catch(ViewNotFoundException $e){
-  echo "<b>System error<b/>: Requested view doesn't exists";
-}
-catch(ActivityNotFoundException $e){
-  echo "<b>404</b>: Requested method doens't appear in requested controller";
+    System::$Scope["error"] = $e;
+    System::Call("error");
 }
 catch(MySQLConnectException $e){
-  echo "<b>Database connection error</b>: Failed to connect to MYSQL Server, try to check AP data in configuration file or server availability";
+    System::$Scope["error"] = $e;
+    System::Call("error","MySQLError");
 }
 catch (Exception $e) {
-  echo "<b>Uncatchable system exception</b>: $e";
+    System::$Scope["error"] = $e;
+    System::Call("error");
 }
 
 ?>
