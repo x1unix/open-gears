@@ -1,8 +1,8 @@
 <?php
   /**
-   * OpenGears Base Functions
-   * @version 0.8
-   * @package opengears
+   * OpenGears Core Functions
+   * @version 1.0
+   * @package com.opengears.libcore
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
 
