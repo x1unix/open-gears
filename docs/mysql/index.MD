@@ -1,5 +1,5 @@
 # OpenGears Framework
-** Documentation **
+**Documentation**
 
 ### MySQL / Index
 
