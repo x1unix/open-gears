@@ -25,3 +25,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite all other URLs to index.php/URL
 RewriteRule ^(.*)$ ./index.php?path=$1
+
+# Display PHP Errors
+php_flag display_errors on
+php_value error_reporting 2047
