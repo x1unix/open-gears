@@ -4,8 +4,7 @@
  * Class EssentialRouter
  *
  * @author Denis Sedchenko
- * @date 31.10.2015
- * @version 1.0.1
+ * @version 1.0
  *
  * Provides a base routing (controller/activity)
  * Can be used in Router as secondary routing source
