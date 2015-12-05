@@ -1,7 +1,7 @@
 <?php
 /**
  * OpenGears Framework Configuration
- * @version 0.8
+ * @version 1.0
  * @package opengears
  * @author Denis Sedchenko [sedchenko.in.ua]
  */
@@ -51,8 +51,6 @@ define("EXTENSIONS",CORE."extensions".DS);
 // CLASSES
 define("CLASSES",CORE."classes".DS);
 
-// MINIMISE OUTPUT FOR CONTROLLERS
-define("MINIFY_OUTPUT",false);
 
 // IS MOD_REWRITE ENABLED
 define("REWRITE_URI",true);
