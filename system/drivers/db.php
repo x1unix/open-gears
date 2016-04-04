@@ -52,6 +52,17 @@ class DataBase
 
   public $Connection;
 
+  public function Close(){
+      if(!$this->Connection){
+          try {
+              $this->Connection->close();
+          } catch (Exception $e) {
+              throw new MySQLConnectException($e, 1);
+
+          }
+          if(!$this->Connection) throw new MySQLConnectException("Failed to close connection to database", 1);
+      }
+  }
     /**
      * Connect to MySQL database
      *
