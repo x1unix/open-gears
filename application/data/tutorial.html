@@ -379,7 +379,7 @@ class usersController extends Controller
 <section>
   <h1><a name="models">Models</a></h1>
   <p>
-  All models in OpenGears are represented as <u>static</u> classes in PHP files.<br />
+  All models in OpenGears are represented as dynamic classes that extended from <u>Model</u> in PHP files.<br />
   All models stored in <u>application/models</u> directory. According to SOLID design, each file contains only single class.
   </p>
   <p>
@@ -388,9 +388,9 @@ class usersController extends Controller
   <u>application/models/users.php</u>
   <code>
     <pre>&lt;php
-public class users
+class users extends Model
 {
-  public static function get($id)
+  public function get($id)
   {
     // Create a new object to access to DB
     // Name of table - users
@@ -411,21 +411,22 @@ public class users
   <u>users.php</u>
   <code>
     <pre>&lt;php
-// import a model
-System::GetModel("users");
 
 class usersController extends Controller
 {
 
   public function Main()
   {
+  // Get model instance
+    $users = Model::Get("users");
+
     $this->SetView("users","main");
 
     $_id = 1;
     if(isset($_GET['id'])) $_id = $_GET['id'];
 
     // Here we use the model
-    $this->Data['users'] = users::get($_id);
+    $this->Data['users'] = $users->get($_id);
 
     $this->Data['header'] = System::Invoke("common","header");
     $this->Data['footer'] = System::Invoke("common","footer");
