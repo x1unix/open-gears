@@ -151,7 +151,7 @@
           $this->SetView("helloWorld","main");
 
           // Create a variable, to use in template
-          $this->Data['username'] = "World";
+          $this->Set('username', 'World');
 
           // Execute a controller
           return $this->Execute();
@@ -205,11 +205,11 @@
           $this->SetView("common","header");
 
           // Create an array with links for main menu
-          $this->Data['menu'] = array('/'=>"Home", "/about"=>"About","/buy"=>"Store");
+          $this->Set('menu', array('/'=>"Home", "/about"=>"About","/buy"=>"Store") );
 
           // Page title
           // To receive page title from another controller, we will use system scope
-          $this->Data['title'] = $this->Scope['pageTitle'];
+          $this->Set('title', $this->Scope['pageTitle'] );
 
           // Execute a controller
           return $this->Execute();
@@ -223,7 +223,7 @@
           $this->SetView("common","footer");
 
           // copyright variable
-          $this->Data['copyright'] = "2015 © Copyright";
+          $this->Set('copyright', '2015 © Copyright');
 
           // Execute a controller
           return $this->Execute();
