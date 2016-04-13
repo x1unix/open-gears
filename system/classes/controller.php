@@ -34,6 +34,11 @@ abstract class Controller
     System::$Scope[$key] = $value;
   }
 
+  public function Set($key, $val) {
+    $this->Data[$key] = $val;
+    return $this;
+  }
+
 /**
  * Returns controller instance
  * @return Controller Instance of controller
