@@ -1,7 +1,7 @@
 <?php
   /**
    * OpenGears Framework Kernel
-   * @version 1.0
+   * @version 1.2
    * @package com.opengears.core
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
@@ -9,7 +9,7 @@
 class System
 {
 
-  public static $Version = "1.0";
+  public static $Version = "1.2";
   public static $Scope = array();
 
 
@@ -28,8 +28,9 @@ class System
   {
     $f = MODELS."$model.php";
     if(!file_exists($f)) throw new ModelNotFoundException("Cannot load model, file '$f' was not found", 1);
-    require($f);
-    return new self;
+    require_once($f);
+    $f = new ReflectionClass($model);
+    return $f->newInstance();
   }
   /**
    * Return full HTTP path to specified controller
@@ -53,7 +54,7 @@ class System
   {
     if(!file_exists(CONTROLLERS."$vClass.php")) throw new ControllerNotFoundException("Controller not found: '".CONTROLLERS."$vClass.php'", 1);
     require_once(CONTROLLERS."$vClass.php");
-    if(!class_exists($vClass.'Controller')) throw new ControllerClassNotFoundException("Class not found: '$vClass.Controller'", 1);
+    if(!class_exists($vClass.'Controller')) throw new ControllerClassNotFoundException("Class not found: '".$vClass."Controller'", 1);
     if(!method_exists($vClass.'Controller', $vFunc)) throw new ActivityNotFoundException("Activity '$vFunc' not found in Controller '$vClass'", 1);
     
     $vClass .= "Controller";
@@ -100,6 +101,11 @@ class System
   public static function Init()
   {
     header('X-Based-On: OpenGears/'.System::$Version);
+
+    // Throw all notices and warnings as exceptions
+    set_error_handler(function($num, $desc, $file, $line, $context) {
+      throw new ErrorException($desc, 0, $num, $file, $line);
+    });
     self::LoadClasses()->LoadDrivers();
 
     return new self;
