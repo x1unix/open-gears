@@ -1,7 +1,7 @@
 <?php
   /**
    * OpenGears Framework Kernel
-   * @version 1.2
+   * @version 1.5.0
    * @package com.opengears.core
    * @author Denis Sedchenko [sedchenko.in.ua]
    */
@@ -9,7 +9,7 @@
 class System
 {
 
-  public static $Version = "1.2";
+  public static $Version = "1.5.0";
   public static $Scope = array();
 
 

@@ -1,5 +1,5 @@
 <?php
-// OPEN-GEARS FRAMEWORK BOOTSTRAPER [1.2] (MAGURO)
+// OPEN-GEARS FRAMEWORK BOOTSTRAPER [1.5] (MAGURO)
 // 2015 © Denis Sedchenko
 include('config.php');
 
