@@ -10,9 +10,10 @@
 
 class AJAXResponse
 {
-	public static function error($desc)
+	public static function error($desc, $code=0)
 	{
-		return json_encode(array("success"=>false,"response"=>$desc));
+    $data = array('code'=>$code, 'message'=>$desc);
+		return json_encode(array("success"=>false,"response"=>$data));
 	}
 	public static function reply($arr,$success=true)
 	{
