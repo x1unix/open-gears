@@ -21,7 +21,5 @@
     </ul>
   </div>
 </div>
-<!-- Generated on <?=$cdate?> -->
-
 </body>
 </html>
