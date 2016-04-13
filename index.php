@@ -1,7 +1,6 @@
 <?php
-// OPEN-GEARS FRAMEWORK [1.0] (MAGURO)
+// OPEN-GEARS FRAMEWORK BOOTSTRAPER [1.2] (MAGURO)
 // 2015 © Denis Sedchenko
-
 include('config.php');
 
 if(!defined("IFCONFIG")) die("<b>OpenGears Load Error</b><br />Failed to load configuration file, check if config.php exists and if 'IFCONFIG' defined.");
@@ -12,7 +11,7 @@ System::Init();
 
 // Load System Extensions
 Extensions::load(
-    array('base','convert','ajaxResponse','baseRouter')
+    array('base','convert', 'session', 'ajaxResponse', 'baseRouter', 'debug')
 );
 
 
